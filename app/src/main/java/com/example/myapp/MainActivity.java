@@ -50,6 +50,10 @@ public static String mail1="https://www.gmail.com";
                 case R.id.browser:
                 startActivity(new Intent(this, Cuthbert2.class));
                 return true;
+            case R.id.list:
+                startActivity(new Intent(this, My_lists.class));
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
