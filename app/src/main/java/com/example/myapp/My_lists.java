@@ -27,7 +27,7 @@ public class My_lists extends AppCompatActivity {
 
         List<String> dataList = new ArrayList<String>();
         dataList.add("KCCA");
-        dataList.add("vIPERS");
+        dataList.add("VIPERS");
         dataList.add("EXPRESS");
         dataList.add("WAKISO GIANT");
         dataList.add("MBRARARA FC");
