@@ -1,24 +1,50 @@
 package com.example.myapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.Manifest.*;
+
 public class MainActivity extends AppCompatActivity {
+   private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+int battery = intent.getIntExtra("battery",0);
+ProgressBar b = (ProgressBar) findViewById(R.id.progressBar2);
+b.setProgress(battery);
+TextView t =(TextView) findViewById(R.id.battery);
+t.setText("My battery level is:"+Integer.toString(battery)+"%");
+
+
+        }
+    };
+
 public static String mail1="https://www.gmail.com";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        registerReceiver(receiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
     }
+
     public void sendMessage (View view){
     EditText message = (EditText)findViewById(R.id.message);
     Toast.makeText (this, "Sending message " + message.getText().toString(), Toast.LENGTH_SHORT).show();
@@ -53,6 +79,50 @@ public static String mail1="https://www.gmail.com";
             case R.id.list:
                 startActivity(new Intent(this, My_lists.class));
                 return true;
+
+
+                    case R.id.list2:
+                        Intent a = new Intent(Intent.ACTION_SEND);
+                        a.setData(Uri.parse("mailto"));
+                        String to [] = {"mpicut48@gmail.com"};
+                        a.putExtra(Intent.EXTRA_EMAIL, to);
+                        a.putExtra(Intent.EXTRA_SUBJECT, "Hey hello");
+                        a.putExtra(Intent.EXTRA_TEXT, "Put a design");
+                        a.setType("message/rfc822");
+                        startActivity(a);
+                        return true;
+
+            case R.id.list3:
+                try {
+                    // check for call permissions
+                    int permissionCheck = ContextCompat.checkSelfPermission(this, permission.CALL_PHONE);
+
+                    // Here, thisActivity is the current activity
+                    if (ContextCompat.checkSelfPermission(this, permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+                        // Should we show an explanation?
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission.CALL_PHONE)) {
+
+                            // Show an explanation to the user *asynchronously*
+                            Toast.makeText(this, "This permission is required to call a phone number", Toast.LENGTH_LONG).show();
+
+                        } else {
+
+                            ActivityCompat.requestPermissions(this, new String[]{permission.CALL_PHONE}, 1);
+
+                            // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                            // app-defined int constant. The callback method gets the
+                            // result of the request.
+                        }
+                    }
+                    Intent phone = new Intent(Intent.ACTION_CALL, Uri.parse("tel:0786237823"));
+                    startActivity(phone);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+                return true;
+
 
         }
         return super.onOptionsItemSelected(item);
