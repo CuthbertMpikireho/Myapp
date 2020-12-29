@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Myapp</string>
     <string name="cool">God</string>
+    <string name="email">Email</string>
+    <string name="enable_wifi">Enable Wifi</string>
 </resources>

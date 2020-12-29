@@ -1,10 +1,5 @@
 package com.example.myapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,33 +10,53 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.Manifest.*;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import static android.Manifest.permission;
+
+
 
 public class MainActivity extends AppCompatActivity {
+
+
+
    private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 int battery = intent.getIntExtra("battery",0);
 ProgressBar b = (ProgressBar) findViewById(R.id.progressBar2);
 b.setProgress(battery);
+
 TextView t =(TextView) findViewById(R.id.battery);
-t.setText("My battery level is:"+Integer.toString(battery)+"%");
+t.setText("My battery level is:"+ Integer.toString(battery)+"%");
 
 
         }
     };
-
 public static String mail1="https://www.gmail.com";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         registerReceiver(receiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+
+         Button wifi1=(Button) findViewById(R.id.wifi);
+         wifi1.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 // This is an explicit intent which helps the user to move from one interface to another
+                 Intent intent=new Intent(MainActivity.this,Wifi.class);
+                 startActivity(intent);
+             }
+         });
 
     }
 
@@ -80,10 +95,18 @@ public static String mail1="https://www.gmail.com";
                 startActivity(new Intent(this, My_lists.class));
                 return true;
 
+            case R.id.external_storage:
+               startActivity(new Intent(this, external.class));
+               return true;
+
+            case R.id.internal_storage:
+                startActivity(new Intent(this, internal.class));
+                return true;
+
 
                     case R.id.list2:
                         Intent a = new Intent(Intent.ACTION_SEND);
-                        a.setData(Uri.parse("mailto"));
+                        a.setData(Uri.parse("mail to"));
                         String to [] = {"mpicut48@gmail.com"};
                         a.putExtra(Intent.EXTRA_EMAIL, to);
                         a.putExtra(Intent.EXTRA_SUBJECT, "Hey hello");
@@ -115,7 +138,7 @@ public static String mail1="https://www.gmail.com";
                             // result of the request.
                         }
                     }
-                    Intent phone = new Intent(Intent.ACTION_CALL, Uri.parse("tel:0786237823"));
+                    Intent phone = new Intent(Intent.ACTION_CALL, Uri.parse("tel:0788909788"));
                     startActivity(phone);
                 }
                 catch (Exception e){
@@ -127,6 +150,7 @@ public static String mail1="https://www.gmail.com";
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 }
 

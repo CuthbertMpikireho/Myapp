@@ -27,11 +27,11 @@ public class My_lists extends AppCompatActivity {
 
         List<String> dataList = new ArrayList<String>();
         dataList.add("KCCA");
-        dataList.add("VIPERS");
-        dataList.add("EXPRESS");
-        dataList.add("WAKISO GIANT");
-        dataList.add("MBRARARA FC");
-        dataList.add("TOORO UNITED");
+        dataList.add("Vipers");
+        dataList.add("Express");
+        dataList.add("Wakiso Giants");
+        dataList.add("Mbarara City");
+        dataList.add("Tooro United");
 
         ListView listView = (ListView)findViewById(R.id.read);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, dataList);

@@ -2,10 +2,17 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/browser" android:title="Access C File" />
+    <item
+        android:id="@+id/browser"
+        android:title="Access C File" />
     <item android:id="@+id/mail" android:title="Gmail" />
     <item android:id="@+id/play" android:title="Music" />
     <item android:id="@+id/list" android:title="Views" />
-    <item android:id="@+id/list2" android:title="Email" />
+    <item android:id="@+id/internal_storage" android:title="Internal Storage" />
+    <item android:id="@+id/external_storage" android:title="External Storage" />
+    <item
+        android:id="@+id/list2"
+        android:title="Email" />
     <item android:id="@+id/list3" android:title="Call Phone" />
+
 </menu>
