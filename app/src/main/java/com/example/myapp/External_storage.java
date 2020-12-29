@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-class external extends AppCompatActivity {
+public class External_storage extends AppCompatActivity {
     Button button_save;
     Button button_loading;
     EditText edtinput;
@@ -24,12 +24,10 @@ class external extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.external);
-
-
+        setContentView(R.layout.activity_external_storage);
         button_save = findViewById(R.id.button_save);
         button_loading = findViewById(R.id.button_loading);
-        edtinput = findViewById(R.id.external_storage);
+        edtinput = findViewById(R.id.edtinput);
         filename = "myFile.text";
         filepath = "MyFileDir";
 
@@ -56,7 +54,7 @@ class external extends AppCompatActivity {
                     edtinput.setText("");
                     Toast.makeText(getApplicationContext(), "saved on the external card", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "empty text field enter something", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "empty text field eneter something", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -73,4 +71,3 @@ class external extends AppCompatActivity {
     }
 
 }
-

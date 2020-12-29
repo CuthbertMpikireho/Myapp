@@ -14,15 +14,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-class internal extends AppCompatActivity {
-
+public class Internal_storage extends AppCompatActivity {
     private static final String FILE_NAME="example.txt";
     EditText mEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.internal);
-        mEditText=findViewById(R.id.internal_storage);
+        setContentView(R.layout.activity_internal_storage);
+        mEditText=findViewById(R.id.edit_text);
     }
 
     public void save(View v){
@@ -80,4 +79,3 @@ class internal extends AppCompatActivity {
         }
     }
 }
-

@@ -53,7 +53,7 @@ public static String mail1="https://www.gmail.com";
              @Override
              public void onClick(View v) {
                  // This is an explicit intent which helps the user to move from one interface to another
-                 Intent intent=new Intent(MainActivity.this,Wifi.class);
+                 Intent intent=new Intent(MainActivity.this,Wifi2.class);
                  startActivity(intent);
              }
          });
@@ -78,7 +78,7 @@ public static String mail1="https://www.gmail.com";
         int id = item.getItemId();
         switch (id){
             case R.id.play:
-                startActivity(new Intent(this,cuthbert1.class));
+                startActivity(new Intent(this,Cuthbert1.class));
                 return true;
 
            case R.id.mail:
@@ -96,15 +96,22 @@ public static String mail1="https://www.gmail.com";
                 return true;
 
             case R.id.external_storage:
-               startActivity(new Intent(this, external.class));
+              startActivity(new Intent(this, External_storage.class));
                return true;
 
             case R.id.internal_storage:
-                startActivity(new Intent(this, internal.class));
+                startActivity(new Intent(this,Internal_storage.class));
+                return true;
+
+            case R.id.wif:
+                startActivity(new Intent(this, Wifi2.class));
                 return true;
 
 
-                    case R.id.list2:
+
+
+
+            case R.id.list2:
                         Intent a = new Intent(Intent.ACTION_SEND);
                         a.setData(Uri.parse("mail to"));
                         String to [] = {"mpicut48@gmail.com"};

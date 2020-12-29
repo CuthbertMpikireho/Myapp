@@ -10,6 +10,7 @@
     <item android:id="@+id/list" android:title="Views" />
     <item android:id="@+id/internal_storage" android:title="Internal Storage" />
     <item android:id="@+id/external_storage" android:title="External Storage" />
+    <item android:id="@+id/wif" android:title="WIFI" />
     <item
         android:id="@+id/list2"
         android:title="Email" />

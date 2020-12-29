@@ -4,11 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 
-public class cuthbert1 extends AppCompatActivity {
+public class Cuthbert1 extends AppCompatActivity {
 
     MediaPlayer mPlay;
     Button play, pause,end;
@@ -25,7 +24,7 @@ public class cuthbert1 extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(cuthbert1.this,R.raw.perfect);
+                MediaPlayer mediaPlayer = MediaPlayer.create(Cuthbert1.this,R.raw.perfect);
                 mediaPlayer.start();
             }
         });
